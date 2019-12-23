@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+* @author: Colum Cross <cxc9401@rit.edu | people.rit.edu/cxc9401>
+* @name: Choose your choo/Create your car main page.
+*
+* @version: 1.0.1
+-->
+<html lang="en">
+	<head>
+		<!-- Browser Checking -->
+			<script>
+				var x = navigator.userAgent;
+				netCheck = x.split("Navigator");
+				if(netCheck.length > 1) {
+					alert("Sorry, but your browser is out of date. Please use a different broswer.");
+					window.location="https://www.mozilla.org/en-US/firefox/new/";
+				}
+				if(!document.getElementById || !document.createElement) {window.location="https://www.mozilla.org/en-US/firefox/new/";} //send em away
+				var uselessBrowser=false;
+				var fuckIE8ForFuckingUpOpacityWhatTheFuckMS=false;
+			</script>
+			<!--[if lt IE 7]>
+				<script>
+					alert("Sorry, but your browser is out of date. Please use a different broswer.");
+					window.location="https://www.mozilla.org/en-US/firefox/new/";
+				</script>
+			<![endif]-->
+			<!--[if lt IE 8]>
+				<script src="assets/cookies.js"></script>
+				<script>
+					uselessBrowser=true;
+					SetCookie("saved", "");
+/**
+* Do to the fact that IE 7 does not have document.getElementsByClassName OR document.querySelectorAll I had to resort to finding a hack for it online.
+* When can we stop supporting this shit show of a browser?
+* Code from: https://gist.github.com/Fusselwurm/4673695
+*
+*
+ * define document.querySelector & document.querySelectorAll for IE7
+ *
+ * A not very fast but small hack. The approach is taken from
+ * http://weblogs.asp.net/bleroy/archive/2009/08/31/queryselectorall-on-old-ie-versions-something-that-doesn-t-work.aspx
+ *
+ */
+(function () {
+	var
+		style = document.createStyleSheet(),
+		select = function (selector, maxCount) {
+			var
+				all = document.all,
+				l = all.length,
+				i,
+				resultSet = [];
+
+			style.addRule(selector, "foo:bar");
+			for (i = 0; i < l; i += 1) {
+				if (all[i].currentStyle.foo === "bar") {
+					resultSet.push(all[i]);
+					if (resultSet.length > maxCount) {
+						break;
+					}
+				}
+			}
+			style.removeRule(0);
+			return resultSet;
+
+		};
+
+	//  be rly sure not to destroy a thing!
+	if (document.querySelectorAll || document.querySelector) {
+		return;
+	}
+
+	document.querySelectorAll = function (selector) {
+		return select(selector, Infinity);
+	};
+	document.querySelector = function (selector) {
+		return select(selector, 1)[0] || null;
+	};
+}());
+				</script>
+			<![endif]-->
+			<!--[if lte IE 8]>
+				<script>
+					fuckIE8ForFuckingUpOpacityWhatTheFuckMS=true;
+				</script>
+			<![endif]-->
+		<link rel="stylesheet" type="text/css" href="assets/main.css">
+		<meta charset="utf-8" />
+		<title>Trains</title>
+		<script src="assets/initialize.js"></script>
+		<script src="assets/main.js"></script>
+	</head>
+	<body onload="init(initial, 'questions'); createShit(); viewSaved();">
+		<div id="header">
+			<!-- The selection menu for switching your data sets -->
+			<select onchange="pageChange(this);">
+				<option value="train" selected>Choose Your Choo</option>
+				<option value="vehicle" >Create Your Car</option>
+			</select>
+			<h1 id="title"> </h1>
+		</div>
+		<div id="questionsdiv">
+			<p id="placeholder" style="opacity: 0;"></p>
+		</div>
+		<div id="image">
+			<div class="cookie">
+				<h3>Here is a list of all your saved <span class="shit"></span>s:</h3>
+				<div class="cookie" id="cookiediv"></div>
+				<div id="cookiebutton">
+					<button onclick="viewSaved()">Refresh saved <span class="shit"></span>s</button>
+					<button onclick="deleteSaved()">Delete saved <span class="shit"></span>s</button>
+				</div>
+			</div>
+			<div class="cookie">
+				<h3>Get emailed a list of your trains:</h3>
+				<form method="post" action="output.html" onsubmit="return validate();">
+					<input type="text" name="email" placeholder="example@mail.com" required>
+					<input type="submit" value="Send Email">
+				</form>
+				<p id="queryAnswer">Please enter a valid email!</p>
+			</div>
+		</div>
+	</body>
+</html>

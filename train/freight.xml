@@ -1,0 +1,11 @@
+<car>
+	<type>Autorack</type>
+	<type>Boxcar</type>
+	<type>Caboose</type>
+	<type>Covered Hopper</type>
+	<type>Flatcar</type>
+	<type>Gondola</type>
+	<type>Hopper</type>
+	<type>Refrigerated</type>
+	<type>Tank Train</type>
+</car>

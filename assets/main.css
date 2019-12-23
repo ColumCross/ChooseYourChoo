@@ -1,0 +1,82 @@
+body {
+	font-family: Helvetica;
+	background-color: #C2D8FD;
+}
+div :not(#header) {
+	background-color: #FEFDFD;
+}
+h1#title, h5 {
+	background-color: #2C91ED;
+	display: inline;
+	padding-left: 35px;
+	margin-left: 50px;
+}
+
+#header {
+	background-color: #2C91ED;
+	padding: 20px;
+}
+#header > button {
+	display: inline;
+	float: left;
+}
+#questionsdiv {
+	width: 800px;
+	float: left;
+	display: inline;
+}
+#questionsdiv div {
+	padding: 5px 20px 5px 20px;
+	border: 2px solid black;
+	margin-bottom: 5px;
+	/*opacity: 0.1;*/
+}
+select {
+	margin-bottom: 10px;
+}
+
+
+button {
+	background-color:  #C2D8FD;
+}
+
+img {
+	display: block;
+}
+
+/* Shit on the right */
+div#image {
+	width: 400px;
+	float: right;
+	display: inline;
+}
+
+#placeholder {
+	display: none;
+	opacity: 0;
+}
+#queryAnswer {
+	display: none;
+	color: red;
+	text-align: center;
+}
+
+.cookie {
+	border: 2px solid black;
+	border-radius: 25px;
+	padding: 5px;
+	padding-bottom: 15px;
+	margin-bottom: 5px;
+}
+#cookiebutton, form, .cookie > h3 {
+	text-align: center;
+}
+#cookiediv {
+	margin-bottom: 15px;
+	visibility: hidden;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+#cookiediv > p {
+	margin-left: 20px;
+}
